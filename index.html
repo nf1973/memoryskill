@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RGB to Hex Converter</title>
+    <title>Memory Skill Game</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@800&display=swap" rel="stylesheet">
@@ -22,8 +22,12 @@
       
       <div class="container-item"> 
         <div class="main" id="main">
-          <div class="content">  
-           CONTENT
+          <div class="content">
+            <div class="game-button" id="yellow-button" onclick="yellowClicked()"></div>
+            <div class="game-button" id="red-button" onclick="redClicked()"></div>
+            <div class="game-button" id="green-button" onclick="greenClicked()"></div>
+            <div class="game-button" id="blue-button" onclick="blueClicked()"></div>
+            <div class="control-button" id="start-button" onclick="startGame()">Start Game</div>
           </div>
         </div>
       </div>
@@ -37,4 +41,5 @@
     
   </body>
   <script src="scripts/main.js"></script>
+  <script src="scripts/extras.js"></script>
 </html>
