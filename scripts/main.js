@@ -13,6 +13,7 @@ let gapBeforeNextRound=1000;
 let readyToPlay=false;
 let userSequence = [];
 let sequence = [];
+var round = 0;
 
 async function startGame() {
     //Set Inital Colors only if they are not already set
@@ -22,12 +23,14 @@ async function startGame() {
         }
     }
 
+    //round = sequence.length;
+
     startButton.innerHTML="Watch Sequence ("+sequence.length+")";
     startButtonCss.style.backgroundColor="#4281a4";
 
     let delay = await delayres(gapBeforeNextRound); 
 
-    //console.log(sequence);
+    console.log(sequence);
 
     for (flashes of sequence) {
         flashButton(flashes,flashTime)
@@ -41,7 +44,7 @@ function yellowClicked() {
     if (readyToPlay) { //if not readyToPlay then ignore the click!
         userSequence.push("yellow");
         flashButton("yellow",200);
-        checkSequence();
+        checkSequence(round, "yellow");
     }
 }
 
@@ -49,7 +52,7 @@ function redClicked() {
     if (readyToPlay) { //if not readyToPlay then ignore the click!
         userSequence.push("red");
         flashButton("red",200);
-        checkSequence();
+        checkSequence(round, "red");
     }
 }
 
@@ -57,7 +60,7 @@ function blueClicked() {
     if (readyToPlay) { //if not readyToPlay then ignore the click!
         userSequence.push("blue");
         flashButton("blue",200);
-        checkSequence();
+        checkSequence(round, "blue");
     }
 }
 
@@ -65,24 +68,34 @@ function greenClicked() {
     if (readyToPlay) { //if not readyToPlay then ignore the click!
         userSequence.push("green");
         flashButton("green",200);
-        checkSequence();
+        checkSequence(round, "green");
     }
 }
 
-function checkSequence() {
-    for (let i = 0; i < (userSequence.length); i++) {
-        console.log(i,sequence);
-        if (userSequence[i]!=sequence[i]) {
-        gameOver();
-       }
-       else if (userSequence.length==sequence.length) {
-        startButton.innerHTML="Watch Sequence";
-        userSequence.length=0;
-        readyToPlay = false;
-        addToSequence(sequence);
-        startGame();
-       }
+function checkSequence(round, colorClicked) {
+    // for (let i = 0; i < (userSequence.length); i++) {
+    //     console.log(i,sequence);
+    //     if (userSequence[i]!=sequence[i]) {
+    //     gameOver();
+    //    }
+    //    else if (userSequence.length==sequence.length) {
+    //     startButton.innerHTML="Watch Sequence";
+    //     userSequence.length=0;
+    //     readyToPlay = false;
+    //     addToSequence(sequence);
+    //     startGame();
+    //  }
+    //  }
+    console.log (round,colorClicked,sequence[round]);
+    if (colorClicked == sequence[round]) {
+        console.log("Correct");
     }
+    else {
+        console.log("False");
+    }
+    round++;
+
+    
 }
 
 function gameOver() {
